@@ -1,7 +1,8 @@
 import streamlit as st
-from tensorflow_model.model import LyricsGeneratorModel
+# from tensorflow_model.model import LyricsGeneratorModel
 
-MODEL = LyricsGeneratorModel()
+# MODEL = LyricsGeneratorModel()
+MODEL = []
 
 #===========================================#
 #              Streamlit Code               #
@@ -33,7 +34,10 @@ ARTIST_MAP = {
 
 if st.button('Generate'):
     if len(str(inpt_seed)) == 0:
-        st.markdown("<h3 style='text-align: center; color: red;'>EMPTY_STRING_NOT_ALLOWED</h3>", unsafe_allow_html=True)
+        st.markdown(
+            "<h3 style='text-align: center; color: red;'>EMPTY_STRING_NOT_ALLOWED</h3>", unsafe_allow_html=True)
     else:
-        generated_text = '<br>'.join(MODEL.predict(inpt_seed, max_gen_length=80, artist=ARTIST_MAP[inpt_artist])[:10])
-        st.markdown(f"<center>{generated_text}</center>", unsafe_allow_html=True)
+        generated_text = '<br>'.join(MODEL.predict(
+            inpt_seed, max_gen_length=80, artist=ARTIST_MAP[inpt_artist])[:10])
+        st.markdown(f"<center>{generated_text}</center>",
+                    unsafe_allow_html=True)
