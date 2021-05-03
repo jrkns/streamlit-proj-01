@@ -2,7 +2,11 @@ import streamlit as st
 # from tensorflow_model.model import LyricsGeneratorModel
 from tensorflow_model_mini.model import LyricsGeneratorModel
 
-MODEL = LyricsGeneratorModel()
+try:
+    MODEL = LyricsGeneratorModel()
+except Exception as e:
+    print(e)
+    MODEL = []
 
 #===========================================#
 #              Streamlit Code               #
